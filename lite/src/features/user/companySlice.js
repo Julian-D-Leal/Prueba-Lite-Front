@@ -9,7 +9,7 @@ export const fetchCompaniesAsync = createAsyncThunk(
   'company/fetchCompanies',
   async (userId, thunkAPI) => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/companies/")
+      const response = await axios.get("https://lite-companies.fly.dev/api/companies/")
         return response.data;
     } catch (error) {
         console.error('Error fetching companies:', error);
@@ -21,7 +21,7 @@ export const addCompanyAsync = createAsyncThunk(
   'company/addCompanies',
   async (data, thunkAPI) => {
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/companies/", data);
+      const response = await axios.post("https://lite-companies.fly.dev/api/companies/", data);
       alert("company added successfully");
         return response.data;
     } catch (error) {
@@ -35,7 +35,7 @@ export const addCompanyAsync = createAsyncThunk(
     'company/removeCompanies',
     async (id, thunkAPI) => {
         try {
-            const response = await axios.delete("http://127.0.0.1:8000/api/companies/"+id+"/");
+            const response = await axios.delete("https://lite-companies.fly.dev/api/companies/"+id+"/");
             alert(response.data.message);
             return String(id);
         } catch (error) {
@@ -48,7 +48,7 @@ export const addProductAsync = createAsyncThunk(
     'company/addProducts',
     async (data, thunkAPI) => {
         try {
-            const response = await axios.post("http://127.0.0.1:8000/api/products/", data);
+            const response = await axios.post("https://lite-companies.fly.dev/api/products/", data);
             alert("Producto agregado correctamente");
             // return response.data;
         } catch (error) {
@@ -61,7 +61,7 @@ export const updateCompAsync = createAsyncThunk(
     'company/updateComp',
     async (data, thunkAPI) => {
         try {
-            const response = await axios.put("http://127.0.0.1:8000/api/companies/"+data.nit+"/", data);
+            const response = await axios.put("https://lite-companies.fly.dev/api/companies/"+data.nit+"/", data);
             alert("company updated successfully");
             return response.data;
         } catch (error) {

@@ -35,7 +35,7 @@ function Inicio() {
   }, [dispatch]);
 
   const handleEmailSend = (data) => {
-    axios.post("http://127.0.0.1:8000/api/send-inventary/", data)
+    axios.post("https://lite-companies.fly.dev/api/send-inventary/", data)
       .then(res => { alert(res.data.message); })
       .catch(err => console.error(err));
     console.log("Sending inventory by email...");
