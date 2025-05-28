@@ -2,14 +2,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-
-const API_URL = process.env.REACT_APP_API_URL;
-
 export const fetchLoginAsync = createAsyncThunk(
   'user/onLogin',
   async (data, thunkAPI) => {
     try {
-        const response = await axios.post(`${API_URL}/login/`, data)
+        const response = await axios.post('https://lite-companies.fly.dev/api/login/', data)
         return response.data;
     } catch (error) {
         console.error('Error fetching user:', error);
@@ -22,7 +19,7 @@ export const fetchSignupAsync = createAsyncThunk(
   'user/onSignup',
   async (data, thunkAPI) => {
     try {
-        const response = await axios.post(`${API_URL}/signup/`, data)
+        const response = await axios.post('https://lite-companies.fly.dev/api/signup/', data)
         return response.data;
     } catch (error) {
         console.error('Error fetching user:', error);

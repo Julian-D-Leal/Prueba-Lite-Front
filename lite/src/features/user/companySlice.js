@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL;
 const initialState = {
     companies: [],
 };
@@ -10,7 +9,7 @@ export const fetchCompaniesAsync = createAsyncThunk(
   'company/fetchCompanies',
   async (userId, thunkAPI) => {
     try {
-      const response = await axios.get(`${API_URL}/companies/`)
+      const response = await axios.get("https://lite-companies.fly.dev/api/companies/")
         return response.data;
     } catch (error) {
         console.error('Error fetching companies:', error);
@@ -22,7 +21,7 @@ export const addCompanyAsync = createAsyncThunk(
   'company/addCompanies',
   async (data, thunkAPI) => {
     try {
-      const response = await axios.post(`${API_URL}/companies`, data);
+      const response = await axios.post("https://lite-companies.fly.dev/api/companies/", data);
       alert("company added successfully");
         return response.data;
     } catch (error) {
@@ -36,7 +35,7 @@ export const addCompanyAsync = createAsyncThunk(
     'company/removeCompanies',
     async (id, thunkAPI) => {
         try {
-            const response = await axios.delete(`${API_URL}/companies/`+id+"/");
+            const response = await axios.delete("https://lite-companies.fly.dev/api/companies/"+id+"/");
             alert(response.data.message);
             return String(id);
         } catch (error) {
@@ -49,7 +48,7 @@ export const addProductAsync = createAsyncThunk(
     'company/addProducts',
     async (data, thunkAPI) => {
         try {
-            const response = await axios.post(`${API_URL}/products/`, data);
+            const response = await axios.post("https://lite-companies.fly.dev/api/products/", data);
             alert("Producto agregado correctamente");
             // return response.data;
         } catch (error) {

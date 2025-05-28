@@ -10,21 +10,19 @@ function Login() {
   const [showModal, setShowModal] = useState(false);
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false);
+
 
   const isAuthenticated = useSelector(state => state.user.is_authenticated);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Email:', email)
     if (!email || !password) {
       setError('Please enter both email and password.')
       return
     }
     setError('')
     dispatch(fetchLoginAsync({ email, password }))
-    console.log(isAuthenticated)
     // alert(`Logging in with\nEmail: ${email}\nPassword: ${password}`)
   }
 
