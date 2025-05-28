@@ -5,6 +5,9 @@ import { useDispatch } from "react-redux";
 import { logOut } from "../features/user/userSlice";
 import { fetchCompaniesAsync, addCompanyAsync, removeCompanyAsync, addProductAsync, updateCompAsync } from "../features/user/companySlice";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
+
 function Inicio() {
   const isAdmin = useSelector(state => state.user.is_admin);
   const [email, setEmail] = useState("");
@@ -35,7 +38,7 @@ function Inicio() {
   }, [dispatch]);
 
   const handleEmailSend = (data) => {
-    axios.post("https://lite-companies.fly.dev/api/send-inventary/", data)
+    axios.post(`${API_URL}/send-inventary/`, data)
       .then(res => { alert(res.data.message); })
       .catch(err => console.error(err));
     console.log("Sending inventory by email...");

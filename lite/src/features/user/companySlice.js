@@ -9,7 +9,7 @@ export const fetchCompaniesAsync = createAsyncThunk(
   'company/fetchCompanies',
   async (userId, thunkAPI) => {
     try {
-      const response = await axios.get("https://lite-companies.fly.dev/api/companies/")
+      const response = await axios.get(`${API_URL}/companies/`)
         return response.data;
     } catch (error) {
         console.error('Error fetching companies:', error);
@@ -21,7 +21,7 @@ export const addCompanyAsync = createAsyncThunk(
   'company/addCompanies',
   async (data, thunkAPI) => {
     try {
-      const response = await axios.post("https://lite-companies.fly.dev/api/companies/", data);
+      const response = await axios.post(`${API_URL}/companies`, data);
       alert("company added successfully");
         return response.data;
     } catch (error) {
@@ -35,7 +35,7 @@ export const addCompanyAsync = createAsyncThunk(
     'company/removeCompanies',
     async (id, thunkAPI) => {
         try {
-            const response = await axios.delete("https://lite-companies.fly.dev/api/companies/"+id+"/");
+            const response = await axios.delete(`${API_URL}/companies/`+id+"/");
             alert(response.data.message);
             return String(id);
         } catch (error) {
@@ -48,7 +48,7 @@ export const addProductAsync = createAsyncThunk(
     'company/addProducts',
     async (data, thunkAPI) => {
         try {
-            const response = await axios.post("https://lite-companies.fly.dev/api/products/", data);
+            const response = await axios.post(`${API_URL}/products/`, data);
             alert("Producto agregado correctamente");
             // return response.data;
         } catch (error) {
